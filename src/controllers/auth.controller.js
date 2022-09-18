@@ -1,12 +1,12 @@
+import { bcrypt_functions } from "../utils/password/bcrypt.util.js";
+import { getToken } from "../utils/jwt/jwt.util.js";
+import { Dao } from "../daos/Dao.js";
 
-
-export const usuarioController = {
+export const authController = {
     register: async(req, res) => {
         try {
-            if(!(await Dao.usuarios.existEmail(req.body.email))){
+            if(!(await Dao.usuarios.getUserByEmail(req.body.email))){
                 const usuario = {
-                    nombre: req.body.nombre,
-                    telefono: req.body.telefono,
                     email: req.body.email,
                     password: await bcrypt_functions.createHash(req.body.password)
                 }
@@ -24,15 +24,15 @@ export const usuarioController = {
                 res.status(400).send("Email en Uso");
             }
         } catch (error) {
-            
+            console.log(error)
         }
     },
 
     login: async (req, res) => {
         try {
-            const usuario = await Dao.usuarios.getByEmail(req.body.email);
+            const usuario = await Dao.usuarios.getUserByEmail(req.body.email);
             if (!usuario) {
-                res.status(401).send({
+                return res.status(401).send({
                     msg: "Usuario Inexistente"
                 })
             }
@@ -49,7 +49,7 @@ export const usuarioController = {
                 })
             }   
         } catch (error) {
-            
+            console.log(error)
         }
     },
 }

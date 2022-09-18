@@ -10,8 +10,9 @@ config({path: __dirname+"/.env"});
 
 export default {
     //SETUP
-    HOST: process.env.HOST || '127.0.0.1',
+    HOST: process.env.HOST || "127.0.0.1",
     PORT: process.env.PORT || 8080,
     //DATABASE
-    SQLITE: process.env.SQLITE || 'asd'
+    SQLITE: process.env.SQLITE || ":memory:",
+    JWT_SECRET: process.env.JWT_SECRET || "secreto"
 }

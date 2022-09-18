@@ -1,16 +1,13 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../../configs/sequelize.config.js";
 
-const generoModel = sequelize.define('genero',{
-    nombre: {
+export const usuarioModel = sequelize.define('usuario',{
+    email: {
         type: DataTypes.STRING
     },
-    imagen: {
+    password: {
         type: DataTypes.STRING
-    },
-    peliculas_series: {
-        type: DataTypes.INTEGER
     }
 });
 
-await generoModel.sync();
+await usuarioModel.sync();

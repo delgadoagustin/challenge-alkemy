@@ -1,7 +1,7 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../../configs/sequelize.config.js";
 
-const pelicula_serieModel = sequelize.define('pelicula_serie',{
+export const pelicula_serieModel = sequelize.define('pelicula_serie',{
     imagen: {
         type: DataTypes.STRING
     },
