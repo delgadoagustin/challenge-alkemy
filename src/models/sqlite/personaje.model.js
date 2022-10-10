@@ -1,5 +1,6 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../../configs/sequelize.config.js";
+import { pelicula_serieModel } from "./pelicula_serie.model.js";
 
 export const personajeModel = sequelize.define('personaje',{
     imagen: {
@@ -17,9 +18,11 @@ export const personajeModel = sequelize.define('personaje',{
     historia: {
         type: DataTypes.TEXT
     },
-    pelicula_serie: {
-        type: DataTypes.STRING
-    },
+    // pelicula_serie: {
+    //     type: DataTypes.STRING
+    // },
 })
+
+personajeModel.belongsToMany(pelicula_serieModel,{through: "personaje_pelicula"});
 
 await personajeModel.sync()

@@ -17,4 +17,13 @@ export class personajeSQLiteDao {
         console.log(nuevo);
         return nuevo;
     }
+
+    async updateOne(id, personaje){
+        await this.repo.update(personaje,{
+            where: {
+                _id: id
+            }
+        })
+        
+    }
 }

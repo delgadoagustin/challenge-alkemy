@@ -25,5 +25,12 @@ export const personajeController = {
         } catch (error) {
             console.log(error)
         }
+    },
+    updateCharacter: async(req,res) => {
+        try {
+            
+        } catch (error) {
+            
+        }
     }
 }
