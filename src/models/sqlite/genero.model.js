@@ -1,6 +1,5 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../../configs/sequelize.config.js";
-import { pelicula_serieModel } from "./pelicula_serie.model.js";
 
 export const generoModel = sequelize.define('genero',{
     nombre: {
@@ -14,6 +13,3 @@ export const generoModel = sequelize.define('genero',{
     // }
 });
 
-generoModel.hasMany(pelicula_serieModel);
-
-await generoModel.sync();
